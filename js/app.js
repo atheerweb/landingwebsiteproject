@@ -14,10 +14,6 @@ let addSection = () => {
   addingSection.innerHTML = `section ${sectionNo}`;
   //adding Navbar children to parent
   navContainer.appendChild(addingSection);
-  //adding  MoveTo elments
-  const moveTo = document.createElement("div");
-  moveTo.classList.add("move__to");
-  moveTo.id = `section ${sectionNo}`;
   //adding sections
   const secTitle = document.createElement("h3");
   secTitle.classList.add("section__title");
@@ -29,8 +25,7 @@ let addSection = () => {
   const sectionParent = document.createElement("div");
   sectionParent.classList.add("section__content");
   sectionParent.id = `section ${sectionNo}`;
-  //appending rest of the childs
-  secContainer.appendChild(moveTo);
+  //appending rest of the childs;
   sectionParent.appendChild(secTitle);
   sectionParent.appendChild(secP);
   secContainer.appendChild(sectionParent);
