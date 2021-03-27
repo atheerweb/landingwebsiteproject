@@ -2,7 +2,7 @@
 const plusContainer = document.querySelector(".plusicon__container");
 const navContainer = document.querySelector(".nav__content");
 const secContainer = document.querySelector(".section__container");
-let sectionNo = 4;
+let sectionNo = 0;
 
 //Functions
 let addSection = () => {
@@ -48,3 +48,11 @@ navContainer.addEventListener("click", function (e) {
     e.target.classList.add("highlighter");
   }
 });
+
+
+
+//Adding 4 Sections dynamically as requested
+addSection();
+addSection();
+addSection();
+addSection();
