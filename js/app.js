@@ -42,7 +42,7 @@ let smoothScroll = (e) => {
     const navTexts = document.querySelectorAll(".nav__text");
     const secContent = document.querySelectorAll(".section__content");
     //current pointed element number
-    let navId = e.target.id.slice(-1);
+    let navId = e.target.id.slice(3);
     let sId = `section ${navId}`;
     // same number from sections
     let section = document.getElementById(sId);
