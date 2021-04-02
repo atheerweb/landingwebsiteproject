@@ -2,15 +2,18 @@
 const plusContainer = document.querySelector(".plusicon__container");
 const navContainer = document.querySelector(".nav__content");
 const secContainer = document.querySelector(".section__container");
+const navItem = document.querySelector(".nav__text");
+
 let sectionNo = 0;
 
 //Functions
+//Adding Sections and navbar items function
 let addSection = () => {
   sectionNo += 1;
   //Navbar children
   const addingSection = document.createElement("a");
   addingSection.classList.add("nav__text");
-  addingSection.href = `#section ${sectionNo}`;
+  addingSection.id = "nav" + sectionNo;
   addingSection.innerHTML = `section ${sectionNo}`;
   //adding Navbar children to parent
   navContainer.appendChild(addingSection);
@@ -31,20 +34,28 @@ let addSection = () => {
   secContainer.appendChild(sectionParent);
   return;
 };
-
 //Event listeners
 plusContainer.addEventListener("click", addSection);
 navContainer.addEventListener("click", function (e) {
-  if (e.target.classList.contains("nav__text")) {
+  if ((e.target.class = "nav__text")) {
     const navTexts = document.querySelectorAll(".nav__text");
+    const secContent = document.querySelectorAll(".section__content");
+    let navId = e.target.id.slice(-1);
+    let sId = `section ${navId}`;
+    let section = document.getElementById(sId);
+    section.scrollIntoView({
+      block:"center"
+    });
     navTexts.forEach((nav) => {
       nav.classList.remove("highlighter");
     });
+    secContent.forEach((sec) => {
+      sec.classList.remove("active");
+    });
     e.target.classList.add("highlighter");
+    section.classList.add("active")
   }
 });
-
-
 
 //Adding 4 Sections dynamically as requested
 addSection();
