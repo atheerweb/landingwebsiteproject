@@ -34,18 +34,23 @@ let addSection = () => {
   secContainer.appendChild(sectionParent);
   return;
 };
-//Event listeners
-plusContainer.addEventListener("click", addSection);
-navContainer.addEventListener("click", function (e) {
+
+let smoothScroll = (e) => {
+  //Adding event listener to the child
   if ((e.target.class = "nav__text")) {
+    //Vars
     const navTexts = document.querySelectorAll(".nav__text");
     const secContent = document.querySelectorAll(".section__content");
+    //current pointed element number
     let navId = e.target.id.slice(-1);
     let sId = `section ${navId}`;
+    // same number from sections
     let section = document.getElementById(sId);
+    //scroll function
     section.scrollIntoView({
-      block:"center"
+      block: "center",
     });
+    //highlight & active classes
     navTexts.forEach((nav) => {
       nav.classList.remove("highlighter");
     });
@@ -53,9 +58,13 @@ navContainer.addEventListener("click", function (e) {
       sec.classList.remove("active");
     });
     e.target.classList.add("highlighter");
-    section.classList.add("active")
+    section.classList.add("active");
   }
-});
+}
+
+//Event listeners
+plusContainer.addEventListener("click", addSection);
+navContainer.addEventListener("click", smoothScroll);
 
 //Adding 4 Sections dynamically as requested
 addSection();
